@@ -1,5 +1,6 @@
-from datetime import datetime, timedelta, timezone
 import logging
+from datetime import datetime, timedelta, timezone
+
 import requests
 from celery import shared_task
 from django.conf import settings
@@ -7,7 +8,6 @@ from django.db.models import Q
 from rest_framework import status
 
 from apps.mailing.models import Client, Mailing, Message
-
 
 logger = logging.getLogger('json_logger')
 
@@ -120,6 +120,3 @@ def start_mailing(mailing_id: int, clients=None):
         }
     )
     mailing.save()
-
-# celery worker -A notifications --loglevel=info
-# celery -A notifications beat

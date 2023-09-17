@@ -1,6 +1,7 @@
-from apps.clients.models import Client
-from django.urls import reverse
 import pytest
+from django.urls import reverse
+
+from apps.clients.models import Client
 
 
 def compare_clients(api_client, db_client):

@@ -60,7 +60,6 @@ class MailingFilter(models.Model):
     class Meta:
         verbose_name = 'Фильтр рассылки'
         verbose_name_plural = 'Фильтры рассылок'
-        # constraint = UniqueTogether
 
 
 class Message(models.Model):

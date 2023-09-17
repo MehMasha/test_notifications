@@ -15,3 +15,76 @@
 {"message": "Get list of mailings", "time": "2023-09-17T17:52:08.045845"}
 {"data": {"csrfmiddlewaretoken": "e5xnFB6zxlrvtgQZVEKnnyXdAB2uYUjiD5n0Hef2IcHWjCEDcnjmrZ5lvh8KiAgw", "start_date": "2023-09-14T20:52", "end_date": "2023-09-24T20:52", "text": "ethhrtherh"}, "message": "Creating a new mailing", "time": "2023-09-17T17:53:40.627743"}
 {"mailing_id": "4", "message": "Get list of mailings messages", "time": "2023-09-17T17:59:23.177602"}
+{"message": "Get list of clients", "time": "2023-09-17T19:40:39.185893"}
+{"client_id": "1", "message": "detail of client", "time": "2023-09-17T19:40:39.190692"}
+{"data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Creating a new client", "time": "2023-09-17T19:40:39.227846"}
+{"client_id": "1", "data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Updating a client", "time": "2023-09-17T19:40:39.233461"}
+{"client_id": "1", "message": "Deleting a client", "time": "2023-09-17T19:40:39.239256"}
+{"message": "Get list of mailings", "time": "2023-09-17T19:40:39.244728"}
+{"mailing_id": "1", "message": "detail of mailings", "time": "2023-09-17T19:40:39.250611"}
+{"data": {"start_date": "2023-09-17 19:40:39.256123+00:00", "end_date": "2023-09-17 20:40:39.256125+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430", "mailing_filters": "{'filter_type': 'mobile_code', 'value': '999'}"}, "message": "Creating a new mailing", "time": "2023-09-17T19:40:39.257277"}
+{"mailing_id": "1", "data": {"start_date": "2023-10-18 21:40:39.261878+00:00", "end_date": "2023-09-17 22:40:39.261883+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430 2", "mailing_filters": "{'filter_type': 'tag', 'value': 'tag1'}"}, "message": "Updating a mailing", "time": "2023-09-17T19:40:39.263045"}
+{"mailing_id": "1", "message": "Deleting a mailing", "time": "2023-09-17T19:40:39.268774"}
+{"mailing_id": "1", "message": "Get list of mailings messages", "time": "2023-09-17T19:40:39.274738"}
+{"message": "Get mailings statistic", "time": "2023-09-17T19:40:39.280998"}
+{"message": "Get list of clients", "time": "2023-09-17T19:42:08.956941"}
+{"client_id": "1", "message": "detail of client", "time": "2023-09-17T19:42:08.961595"}
+{"data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Creating a new client", "time": "2023-09-17T19:42:08.999068"}
+{"client_id": "1", "data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Updating a client", "time": "2023-09-17T19:42:09.004294"}
+{"client_id": "1", "message": "Deleting a client", "time": "2023-09-17T19:42:09.009228"}
+{"message": "Get list of mailings", "time": "2023-09-17T19:42:09.014399"}
+{"mailing_id": "1", "message": "detail of mailings", "time": "2023-09-17T19:42:09.020794"}
+{"data": {"start_date": "2023-09-17 19:42:09.026107+00:00", "end_date": "2023-09-17 20:42:09.026108+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430", "mailing_filters": "{'filter_type': 'mobile_code', 'value': '999'}"}, "message": "Creating a new mailing", "time": "2023-09-17T19:42:09.027215"}
+{"mailing_id": "1", "data": {"start_date": "2023-10-18 21:42:09.031675+00:00", "end_date": "2023-09-17 22:42:09.031679+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430 2", "mailing_filters": "{'filter_type': 'tag', 'value': 'tag1'}"}, "message": "Updating a mailing", "time": "2023-09-17T19:42:09.032805"}
+{"mailing_id": "1", "message": "Deleting a mailing", "time": "2023-09-17T19:42:09.038430"}
+{"mailing_id": "1", "message": "Get list of mailings messages", "time": "2023-09-17T19:42:09.044243"}
+{"message": "Get mailings statistic", "time": "2023-09-17T19:42:09.050311"}
+{"message": "Get list of clients", "time": "2023-09-17T19:42:46.341520"}
+{"client_id": "1", "message": "detail of client", "time": "2023-09-17T19:42:46.346123"}
+{"data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Creating a new client", "time": "2023-09-17T19:42:46.382290"}
+{"client_id": "1", "data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Updating a client", "time": "2023-09-17T19:42:46.387289"}
+{"client_id": "1", "message": "Deleting a client", "time": "2023-09-17T19:42:46.392160"}
+{"message": "Get list of mailings", "time": "2023-09-17T19:42:46.397502"}
+{"mailing_id": "1", "message": "detail of mailings", "time": "2023-09-17T19:42:46.403094"}
+{"data": {"start_date": "2023-09-17 19:42:46.408503+00:00", "end_date": "2023-09-17 20:42:46.408505+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430", "mailing_filters": "{'filter_type': 'mobile_code', 'value': '999'}"}, "message": "Creating a new mailing", "time": "2023-09-17T19:42:46.409653"}
+{"mailing_id": "1", "data": {"start_date": "2023-10-18 21:42:46.414607+00:00", "end_date": "2023-09-17 22:42:46.414611+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430 2", "mailing_filters": "{'filter_type': 'tag', 'value': 'tag1'}"}, "message": "Updating a mailing", "time": "2023-09-17T19:42:46.415837"}
+{"mailing_id": "1", "message": "Deleting a mailing", "time": "2023-09-17T19:42:46.421952"}
+{"mailing_id": "1", "message": "Get list of mailings messages", "time": "2023-09-17T19:42:46.428079"}
+{"message": "Get mailings statistic", "time": "2023-09-17T19:42:46.434322"}
+{"message": "Get list of clients", "time": "2023-09-17T19:43:29.712573"}
+{"client_id": "1", "message": "detail of client", "time": "2023-09-17T19:43:29.717763"}
+{"data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Creating a new client", "time": "2023-09-17T19:43:29.754075"}
+{"client_id": "1", "data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Updating a client", "time": "2023-09-17T19:43:29.759063"}
+{"client_id": "1", "message": "Deleting a client", "time": "2023-09-17T19:43:29.763724"}
+{"message": "Get list of mailings", "time": "2023-09-17T19:43:29.768918"}
+{"mailing_id": "1", "message": "detail of mailings", "time": "2023-09-17T19:43:29.774402"}
+{"data": {"start_date": "2023-09-17 19:43:29.779900+00:00", "end_date": "2023-09-17 20:43:29.779902+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430", "mailing_filters": "{'filter_type': 'mobile_code', 'value': '999'}"}, "message": "Creating a new mailing", "time": "2023-09-17T19:43:29.781005"}
+{"mailing_id": "1", "data": {"start_date": "2023-10-18 21:43:29.786091+00:00", "end_date": "2023-09-17 22:43:29.786095+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430 2", "mailing_filters": "{'filter_type': 'tag', 'value': 'tag1'}"}, "message": "Updating a mailing", "time": "2023-09-17T19:43:29.787201"}
+{"mailing_id": "1", "message": "Deleting a mailing", "time": "2023-09-17T19:43:29.792961"}
+{"mailing_id": "1", "message": "Get list of mailings messages", "time": "2023-09-17T19:43:29.799223"}
+{"message": "Get mailings statistic", "time": "2023-09-17T19:43:29.805488"}
+{"client_id": "1", "message": "detail of client", "time": "2023-09-17T19:43:50.853073"}
+{"message": "Get list of clients", "time": "2023-09-17T19:45:39.255935"}
+{"client_id": "1", "message": "detail of client", "time": "2023-09-17T19:45:39.260523"}
+{"data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Creating a new client", "time": "2023-09-17T19:45:39.264424"}
+{"client_id": "1", "data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Updating a client", "time": "2023-09-17T19:45:39.269290"}
+{"client_id": "1", "message": "Deleting a client", "time": "2023-09-17T19:45:39.274058"}
+{"message": "Get list of mailings", "time": "2023-09-17T19:45:39.279236"}
+{"mailing_id": "1", "message": "detail of mailings", "time": "2023-09-17T19:45:39.284847"}
+{"data": {"start_date": "2023-09-17 19:45:39.288131+00:00", "end_date": "2023-09-17 20:45:39.288133+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430", "mailing_filters": "{'filter_type': 'mobile_code', 'value': '999'}"}, "message": "Creating a new mailing", "time": "2023-09-17T19:45:39.289405"}
+{"mailing_id": "1", "data": {"start_date": "2023-10-18 21:45:39.293821+00:00", "end_date": "2023-09-17 22:45:39.293826+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430 2", "mailing_filters": "{'filter_type': 'tag', 'value': 'tag1'}"}, "message": "Updating a mailing", "time": "2023-09-17T19:45:39.294967"}
+{"mailing_id": "1", "message": "Deleting a mailing", "time": "2023-09-17T19:45:39.300712"}
+{"mailing_id": "1", "message": "Get list of mailings messages", "time": "2023-09-17T19:45:39.307055"}
+{"message": "Get mailings statistic", "time": "2023-09-17T19:45:39.313035"}
+{"message": "Get list of clients", "time": "2023-09-17T19:47:15.979063"}
+{"client_id": "1", "message": "detail of client", "time": "2023-09-17T19:47:15.984439"}
+{"data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Creating a new client", "time": "2023-09-17T19:47:15.988665"}
+{"client_id": "1", "data": {"phone_number": "79999999998", "tag": "tag1", "timezone": "+4"}, "message": "Updating a client", "time": "2023-09-17T19:47:15.993658"}
+{"client_id": "1", "message": "Deleting a client", "time": "2023-09-17T19:47:15.998311"}
+{"message": "Get list of mailings", "time": "2023-09-17T19:47:16.003645"}
+{"mailing_id": "1", "message": "detail of mailings", "time": "2023-09-17T19:47:16.009499"}
+{"data": {"start_date": "2023-09-17 19:47:16.012977+00:00", "end_date": "2023-09-17 20:47:16.012978+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430", "mailing_filters": "{'filter_type': 'mobile_code', 'value': '999'}"}, "message": "Creating a new mailing", "time": "2023-09-17T19:47:16.014299"}
+{"mailing_id": "1", "data": {"start_date": "2023-10-18 21:47:16.018953+00:00", "end_date": "2023-09-17 22:47:16.018958+00:00", "text": "\u041e\u0447\u0435\u043d\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430\u044f \u0440\u0430\u0441\u0441\u044b\u043b\u043a\u0430 2", "mailing_filters": "{'filter_type': 'tag', 'value': 'tag1'}"}, "message": "Updating a mailing", "time": "2023-09-17T19:47:16.020100"}
+{"mailing_id": "1", "message": "Deleting a mailing", "time": "2023-09-17T19:47:16.026146"}
+{"mailing_id": "1", "message": "Get list of mailings messages", "time": "2023-09-17T19:47:16.032387"}
+{"message": "Get mailings statistic", "time": "2023-09-17T19:47:16.038886"}

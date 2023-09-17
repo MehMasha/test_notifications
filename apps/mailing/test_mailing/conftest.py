@@ -1,8 +1,10 @@
+from datetime import datetime, timedelta, timezone
+
 import pytest
 from rest_framework.test import APIClient
-from apps.mailing.models import Mailing, MailingFilter, Message
+
 from apps.clients.models import Client
-from datetime import datetime, timedelta, timezone
+from apps.mailing.models import Mailing, MailingFilter, Message
 
 
 @pytest.fixture

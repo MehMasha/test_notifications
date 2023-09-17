@@ -1,7 +1,8 @@
-from apps.mailing.models import Mailing, Message
+import pytest
 from django.urls import reverse
 from django.utils.dateparse import parse_datetime
-import pytest
+
+from apps.mailing.models import Mailing
 
 
 def compare_mailings(api_mailing, db_mailing):
@@ -24,6 +25,7 @@ def test_get_mailings(client, mailing):
     response = client.get(reverse('api:mailing-list'))
     assert response.status_code == 200
     api_mailing = response.json()[0]
+    print(api_mailing)
     compare_mailings(api_mailing, mailing)
 
 

@@ -4,7 +4,6 @@ from pathlib import Path
 from celery.schedules import crontab
 from dotenv import load_dotenv
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
@@ -17,8 +16,7 @@ if env_debug == 'False':
 else:
     DEBUG = True
 
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
 
 
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN', '')
