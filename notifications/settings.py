@@ -1,13 +1,25 @@
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+from celery.schedules import crontab
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
 SECRET_KEY = 'django-insecure-vmj68do!=^fp5-1vcya*eh25^s&2yaxljzrm(@=zsq$fpiu4h_'
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN', '')
+SERVICE_URL = os.getenv('SERVICE_URL', '')
+
+SERVICE_HEADERS = {
+    'Authorization': f'Bearer {ACCESS_TOKEN}'
+}
 
 
 INSTALLED_APPS = [
@@ -18,8 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    # 'drf_spectacular',
     'api',
     'mailing',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -37,7 +51,7 @@ ROOT_URLCONF = 'notifications.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -49,6 +63,8 @@ TEMPLATES = [
         },
     },
 ]
+
+print(TEMPLATES[0]['DIRS']) 
 
 WSGI_APPLICATION = 'notifications.wsgi.application'
 
@@ -91,3 +107,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
 CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+
+CELERY_BEAT_SCHEDULE = {
+    'check-mailing-time': {
+        'task': 'api.tasks.check_mailings',
+        'schedule': crontab(minute='*/1'),
+    },
+}
+
+
+# SPECTACULAR_SETTINGS = {
+#     'TITLE': 'Notification API',
+#     'DESCRIPTION': 'Description',
+#     'VERSION': '1.0.0',
+#     'SERVE_INCLUDE_SCHEMA': False,
+# }
+
+REST_FRAMEWORK = {}
