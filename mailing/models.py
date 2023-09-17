@@ -26,6 +26,7 @@ class Mailing(models.Model):
 
     class Meta:
         verbose_name = 'Рассылка'
+        verbose_name_plural = 'Рассылки'
 
 
 class MailingFilter(models.Model):
@@ -47,6 +48,7 @@ class MailingFilter(models.Model):
 
     class Meta:
         verbose_name = 'Фильтр рассылки'
+        verbose_name_plural = 'Фильтры рассылок'
 
 
 class Client(models.Model):
@@ -75,7 +77,8 @@ class Client(models.Model):
         return self.mobile_code[1:4]
     
     class Meta:
-        verbose_name = 'Фильтр рассылки'
+        verbose_name = 'Клиент'
+        verbose_name_plural = 'Клиенты'
 
 
 class Message(models.Model):
@@ -102,4 +105,5 @@ class Message(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Сообщения'
+        verbose_name = 'Сообщение'
+        verbose_name_plural = 'Сообщения'
