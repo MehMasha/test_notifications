@@ -34,14 +34,14 @@ class MailingFilter(models.Model):
         to=Mailing,
         on_delete=models.CASCADE,
         verbose_name='Рассылка',
-        related_name='filters'
+        related_name='mailing_filters'
     )
     filter_type = models.CharField(
         verbose_name='Тип фильтра',
         max_length=100,
         choices=FILTER_TYPE_CHOICES
     )
-    filter_value = models.CharField(
+    value = models.CharField(
         verbose_name='Значение',
         max_length=100
     )
