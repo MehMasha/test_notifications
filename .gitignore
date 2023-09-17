@@ -3,3 +3,5 @@ db.sqlite3
 __pycache__/
 .env
 .pytest_cache
+logs/log.json
+celerybeat-schedule

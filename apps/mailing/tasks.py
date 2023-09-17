@@ -22,8 +22,10 @@ def get_time_now():
 def check_mailings():
     mailings = Mailing.objects.filter(status='waiting').order_by('start_date')
     for mailing in mailings:
+        print(mailing, mailing.id)
         now = get_time_now()
         if mailing.start_date <= now <= mailing.end_date:
+            print(mailing, mailing.id)
             mailing.status = Mailing.MailingStatus.PROGRESS
             logger.info(
                 'Mailing starting now',
@@ -65,6 +67,7 @@ def start_mailing(mailing_id: int, clients=None):
             mailing=mailing,
             client=client
         )
+        message.save()
         message.status = Message.MessageStatus.SENT
         data = {
             'id': message.id,

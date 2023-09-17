@@ -1,4 +1,3 @@
 .venv
 .git
 .gitignore
-log.json
