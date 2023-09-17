@@ -46,7 +46,7 @@ class MailingSerializer(serializers.ModelSerializer):
         MailingFilter.objects.bulk_create(filters_list)
 
     def create(self, validated_data):
-        mailing_filters = validated_data.pop('mailing_filters')
+        mailing_filters = validated_data.get('mailing_filters', [])
         mailing = Mailing.objects.create(
             status=Mailing.MailingStatus.WAITING,
             **validated_data
@@ -59,7 +59,8 @@ class MailingSerializer(serializers.ModelSerializer):
         return mailing
 
     def update(self, instance, validated_data):
-        mailing_filters = validated_data.pop('mailing_filters')
+        mailing_filters = validated_data.get('mailing_filters', [])
+        
         instance.start_date = validated_data.get(
             'start_date',
             instance.start_date

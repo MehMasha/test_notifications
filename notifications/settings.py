@@ -64,16 +64,38 @@ TEMPLATES = [
     },
 ]
 
-print(TEMPLATES[0]['DIRS']) 
 
 WSGI_APPLICATION = 'notifications.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv('POSTGRES_DB', 'postgres'),
+#         "USER": os.getenv('POSTGRES_USER', 'postgres'),
+#         "PASSWORD": os.getenv('POSTGRES_PASSWORD', 'postgres'),
+#         "HOST": os.getenv('POSTGRES_HOST', ''),
+#         "PORT": os.getenv('POSTGRES_PORT', 5432),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": 'postgres',
+        "USER": 'postgres',
+        "PASSWORD": 'postgres',
+        "HOST": 'db',
+        "PORT": 5432,
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,8 +127,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
-CELERY_RESULT_BACKEND = "redis://127.0.0.1:6379/0"
+CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_RESULT_BACKEND = "redis://redis:6379/0"
 
 CELERY_BEAT_SCHEDULE = {
     'check-mailing-time': {

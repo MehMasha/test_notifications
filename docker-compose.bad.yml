@@ -1,0 +1,196 @@
+version: "3.9"
+
+services:
+  web:
+    tty: true
+    build: .
+    entrypoint: /notifications/start.sh  
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+  db:
+    container_name: db
+    build: ./postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    driver: bridge
+
+
+# version: "3.9"
+
+# services:
+#   web:
+#     tty: true
+#     build: .
+#     entrypoint: /notifications/start.sh
+#     # environment:
+#     #     DEBUG: "True"
+#     #     CELERY_BROKER_URL: "redis://redis:6379/0"
+#     #     CELERY_RESULT_BACKEND: "redis://redis:6379/0"    
+#     ports:
+#       - 8080:8080
+#     depends_on:
+#       - db
+#     # links:
+#     #   - redis
+#     env_file:
+#       - ./.env
+#     # networks:
+#     #   - network
+#   # celery-worker:
+#   #   tty: true
+#   #   build: .
+#   #   entrypoint: /notifications/celery_worker.sh
+#   #   depends_on:
+#   #     - db
+#   #     - web
+#   #   env_file:
+#   #     - ./.env
+#   # celery-worker:
+#   #   build: .
+#   #   container_name: celery-worker
+#   #   entrypoint: celery
+#   #   command: -A notifications.celery worker --loglevel=info
+#   #   environment:
+#   #       DEBUG: "True"
+#   #       CELERY_BROKER_URL: "redis://redis:6379/0"
+#   #       CELERY_RESULT_BACKEND: "redis://redis:6379/0"    
+#   #   volumes:
+#   #   - .:/var/www/app/worker
+#   #   links:
+#   #   - redis
+#   #   depends_on:
+#   #   - redis
+#   #   networks:
+#   #     - network
+#   # celery_beat:
+#   #   tty: true
+#   #   build: .
+#   #   entrypoint: /notifications/celery_beat.sh
+#   #   depends_on:
+#   #     - web
+#   #     - db
+#   #     - celery-worker
+#   #   env_file:
+#   #     - ./.env
+#   # celery-beat:
+#   #   build: .
+#   #   container_name: celery-beat
+#   #   entrypoint: celery
+#   #   command: -A notifications.celery beat --loglevel=info
+#   #   environment:
+#   #       DEBUG: "True"
+#   #       CELERY_BROKER_URL: "redis://redis:6379/0"
+#   #       CELERY_RESULT_BACKEND: "redis://redis:6379/0"        
+#   #   volumes:
+#   #     - .:/var/www/app/beat
+#   #   links:
+#   #     - celery-worker
+#   #     - redis
+#   #   depends_on:
+#   #     - celery-worker
+#   #     - redis
+#   #   networks:
+#   #     - network
+#   db:
+#     container_name: db
+#     image: postgres:13
+#     env_file:
+#       - ./.env
+#     environment:
+#       - POSTGRES_PASSWORD=password123!
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_DB=postgres
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data/
+#     # networks:
+#     #   - network
+#   # redis:
+#   #   image: redis
+#   #   restart: always
+#   #   # ports:
+#   #   #   - '6379:6379'
+#   #   expose:
+#   #     - 6379
+#   #   volumes: 
+#   #     - redis:/data
+#   #   container_name: redis
+#   #   networks:
+#   #     - network
+      
+
+# volumes:
+#   postgres_data:
+
+
+# networks:
+#   network:
+    # driver: bridge
+    # ipam:
+    #     driver: default
+    #     config:
+    #     - subnet: 172.25.0.0/16
+  
+    # default:
+    #   driver: bridge
+
+
+
+# version: '3'
+# services:
+#   web:
+#     build: .
+#     entrypoint: /notifications/start.sh
+#     volumes:
+#       - .:/notifications
+#     ports:
+#       - 8000:8000
+#     depends_on:
+#       - db
+#       - redis
+
+#   celeryworker:
+#     build: .
+#     command: celery -A your_project_name worker --loglevel=info
+#     volumes:
+#       - .:/notifications
+#     depends_on:
+#       - db
+#       - redis
+
+#   celerybeat:
+#     build: .
+#     command: celery -A your_project_name beat --loglevel=info
+#     volumes:
+#       - .:/notifications
+#     depends_on:
+#       - db
+#       - redis
+
+#   db:
+#     image: postgres:latest
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres123!
+#       - POSTGRES_DB=db
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+
+#   redis:
+#     image: redis:latest
+
+# volumes:
+#   postgres_data:
