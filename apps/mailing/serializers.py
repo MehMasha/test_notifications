@@ -12,19 +12,18 @@ class MailingFilterSerializer(serializers.ModelSerializer):
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
-        fields = ('client', 'date_send', 'status')
+        fields = ('id', 'client', 'date_send', 'status')
 
 
 class MailingSerializer(serializers.ModelSerializer):
     mailing_filters = MailingFilterSerializer(
         many=True,
-        required=False,
-        write_only=True
+        required=False
     )
 
     class Meta:
         model = Mailing
-        fields = ('id', 'start_date', 'end_date', 'text', 'mailing_filters')
+        fields = ('id', 'start_date', 'status', 'end_date', 'text', 'mailing_filters')
 
     def create_filters(self, instance, mailing_filters):
         filters_list = []
@@ -45,24 +44,22 @@ class MailingSerializer(serializers.ModelSerializer):
             status=Mailing.MailingStatus.WAITING,
             **validated_data
         )
+        print(validated_data)
         self.create_filters(mailing, mailing_filters)
-
-        # Здесь должен быть таск на запуск этой рассылки
-        # В зависимости от start_date И end_date
 
         return mailing
 
     def update(self, instance, validated_data):
         mailing_filters = validated_data.get('mailing_filters', [])
-
         instance.start_date = validated_data.get(
             'start_date',
             instance.start_date
         )
         instance.end_date = validated_data.get('end_date', instance.end_date)
         instance.text = validated_data.get('text', instance.text)
-        instance.mailing_filters.delete()
+        instance.mailing_filters.set([])
         self.create_filters(instance, mailing_filters)
+        instance.save()
         return instance
 
 
@@ -73,5 +70,5 @@ class MailingStatisticSerializer(MailingSerializer):
 
     class Meta:
         model = Mailing
-        fields = ('id', 'start_date', 'end_date',
+        fields = ('id', 'start_date', 'end_date', 'status',
                   'text', 'mailing_filters', 'delivered', 'sent', 'error')

@@ -4,6 +4,9 @@ from apps.clients.models import Client
 
 
 class Mailing(models.Model):
+    """
+    Модель рассылки.
+    """
     class MailingStatus(models.TextChoices):
         WAITING = 'waiting', 'В ожидании'
         PROGRESS = 'in_progress', 'В процессе'
@@ -31,6 +34,9 @@ class Mailing(models.Model):
 
 
 class MailingFilter(models.Model):
+    """
+    Модель фильтра рассылки.
+    """
     class MailingFilterChoices(models.TextChoices):
         TAG = 'tag', 'Фильтр по тегу'
         MOBILE = 'mobile_code', 'Фильтр по коду оператора'
@@ -54,9 +60,13 @@ class MailingFilter(models.Model):
     class Meta:
         verbose_name = 'Фильтр рассылки'
         verbose_name_plural = 'Фильтры рассылок'
+        # constraint = UniqueTogether
 
 
 class Message(models.Model):
+    """
+    Модель сообщения рассылки.
+    """
     class MessageStatus(models.TextChoices):
         SENT = 'sent', 'Отправлено'
         DELIVERED = 'delivered', 'Доставлено'

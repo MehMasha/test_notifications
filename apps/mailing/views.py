@@ -11,11 +11,24 @@ from apps.mailing.serializers import (MailingSerializer,
 
 
 class MailingViewSet(viewsets.ModelViewSet):
+    """
+    Эндпоинты для информации по рассылкам.
+
+    Позволяют получить информацию по одному или нескольким рассылкам,
+    изменять их или удалять
+    """
     serializer_class = MailingSerializer
     queryset = Mailing.objects.all()
 
     @action(detail=False, methods=['get'])
     def statistic(self, request):
+        """
+        Получение статистики по рассылкам.
+
+        Информация по каждой рассылке дополняется полями
+        delivered, sent и error, каждое из которых показывает
+        количество сообщений по данной рассылке с определенным статусом
+        """
         mailings = Mailing.objects.annotate(
             delivered=Count('messages', filter=Q(
                 messages__status=Message.MessageStatus.DELIVERED
@@ -32,6 +45,11 @@ class MailingViewSet(viewsets.ModelViewSet):
 
 
 class MessageViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
+    """
+    Эндпоинт для подробной информации по рассылкам.
+
+    Позволяет получить информацию по сообщениям по любой рассылке
+    """
     serializer_class = MessageSerializer
 
     def get_queryset(self):
