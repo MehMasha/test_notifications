@@ -23,6 +23,7 @@ class MailingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Mailing
+        read_only_fields = ('status', )
         fields = ('id', 'start_date', 'status', 'end_date', 'text', 'mailing_filters')
 
     def create_filters(self, instance, mailing_filters):

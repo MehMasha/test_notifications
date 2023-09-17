@@ -36,5 +36,5 @@ urlpatterns = [
         schema_view.with_ui('swagger', cache_timeout=0),
         name='swagger-ui'
     ),
-
+    path('', include('django_prometheus.urls')),
 ]
