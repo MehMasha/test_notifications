@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from mailing.models import (Client, Mailing, Message,
-                            MailingFilter, FILTER_TYPE_CHOICES)
+                            MailingFilter)
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -35,7 +35,7 @@ class MailingSerializer(serializers.ModelSerializer):
     def create_filters(self, instance, mailing_filters):
         filters_list = []
         for fil in mailing_filters:
-            if fil['filter_type'] not in FILTER_TYPE_CHOICES:
+            if fil['filter_type'] not in MailingFilter.MailingFilterChoices:
                 raise serializers.ValidationError('Несуществующий фильтр')
             filters_list.append(
                 MailingFilter(
@@ -47,8 +47,15 @@ class MailingSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         mailing_filters = validated_data.pop('mailing_filters')
-        mailing = Mailing.objects.create(**validated_data)
+        mailing = Mailing.objects.create(
+            status=Mailing.MailingStatus.WAITING,
+            **validated_data
+        )
         self.create_filters(mailing, mailing_filters)
+
+        # Здесь должен быть таск на запуск этой рассылки
+        # В зависимости от start_date И end_date
+
         return mailing
 
     def update(self, instance, validated_data):

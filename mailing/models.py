@@ -1,19 +1,13 @@
 from django.core.validators import RegexValidator
 from django.db import models
 
-FILTER_TYPE_CHOICES = (
-    ('tag', 'Фильтр по тегу'),
-    ('mobile', 'Фильтр по коду оператора'),
-)
-
-MESSAGE_STATUS_CHOICES = (
-    ('sent', 'Отправлено'),
-    ('delivered', 'Доставлено'),
-    ('error', 'Ошибка сервера'),
-)
-
 
 class Mailing(models.Model):
+    class MailingStatus(models.TextChoices):
+        WAITING = 'waiting', 'В ожидании'
+        PROGRESS = 'in_progress', 'В процессе'
+        DONE = 'done', 'Закончена'
+
     start_date = models.DateTimeField(
         verbose_name='Дата и время запуска'
     )
@@ -23,6 +17,12 @@ class Mailing(models.Model):
     text = models.TextField(
         verbose_name='Текст рассылки'
     )
+    status = models.CharField(
+        verbose_name='Статус рассылки',
+        choices=MailingStatus.choices,
+        default=MailingStatus.WAITING,
+        max_length=20
+    )
 
     class Meta:
         verbose_name = 'Рассылка'
@@ -30,6 +30,10 @@ class Mailing(models.Model):
 
 
 class MailingFilter(models.Model):
+    class MailingFilterChoices(models.TextChoices):
+        TAG = 'tag', 'Фильтр по тегу'
+        MOBILE = 'mobile_code', 'Фильтр по коду оператора'
+
     mailing = models.ForeignKey(
         to=Mailing,
         on_delete=models.CASCADE,
@@ -39,7 +43,7 @@ class MailingFilter(models.Model):
     filter_type = models.CharField(
         verbose_name='Тип фильтра',
         max_length=100,
-        choices=FILTER_TYPE_CHOICES
+        choices=MailingFilterChoices.choices
     )
     value = models.CharField(
         verbose_name='Значение',
@@ -75,20 +79,25 @@ class Client(models.Model):
     @property
     def mobile_code(self):
         return self.mobile_code[1:4]
-    
+
     class Meta:
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
 
 
 class Message(models.Model):
+    class MessageStatus(models.TextChoices):
+        SENT = 'sent', 'Отправлено'
+        DELIVERED = 'delivered', 'Доставлено'
+        ERROR = 'error', 'Ошибка'
+
     date_send = models.DateTimeField(
         verbose_name='Дата отправки',
         auto_now_add=True
     )
     status = models.CharField(
         verbose_name='Статус сообщения',
-        choices=MESSAGE_STATUS_CHOICES,
+        choices=MessageStatus.choices,
         max_length=20
     )
     mailing = models.ForeignKey(
