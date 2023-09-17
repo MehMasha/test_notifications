@@ -10,3 +10,5 @@ python-dotenv==1.0.0
 redis==3.5.3
 requests==2.31.0
 psycopg2-binary==2.9.7
+JSON-log-formatter==0.5.2
+django-prometheus==2.3.1
