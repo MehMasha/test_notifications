@@ -3,6 +3,9 @@ from django.db import models
 
 
 class Client(models.Model):
+    """
+    Модель клиента рассылки.
+    """
     phone_number = models.CharField(
         verbose_name='Номер телефона',
         max_length=11,
