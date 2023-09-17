@@ -11,7 +11,7 @@ SECRET_KEY = 'django-insecure-vmj68do!=^fp5-1vcya*eh25^s&2yaxljzrm(@=zsq$fpiu4h_
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.0.14", "localhost", '127.0.0.1', '95.163.230.19']
 
 
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN', '')

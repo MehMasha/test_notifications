@@ -1,9 +1,11 @@
 version: "3.9"
 
-services:
+services:   
   web:
     build: .
-    entrypoint: /notifications/start.sh  
+    entrypoint: /notifications/start.sh
+    links:
+      - redis
     ports:
       - 8080:8080
     depends_on:
@@ -15,6 +17,69 @@ services:
       POSTGRES_USER: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+  # celery-worker:
+  #   build: .
+  #   entrypoint: /notifications/celery_worker.sh
+  #   depends_on:
+  #     - db
+  #     - web
+  #   links:
+  #     - redis
+  #   env_file:
+  #     - ./.env
+  # celery_beat:
+  #   build: .
+  #   entrypoint: /notifications/celery_beat.sh
+  #   depends_on:
+  #     - web
+  #     - db
+  #     - celery-worker
+  #   links:
+  #     - redis
+  #   env_file:
+  #     - ./.env
+  celery-worker:
+    build: .
+    container_name: celery-worker
+    entrypoint: celery
+    command: -A notifications.celery worker --loglevel=info
+    environment:
+        DEBUG: "True"
+        CELERY_BROKER_URL: "redis://redis:6379/0"
+        CELERY_RESULT_BACKEND: "redis://redis:6379/0"    
+    volumes:
+    - .:/var/www/app/worker
+    links:
+    - redis
+    depends_on:
+    - redis
+  celery-beat:
+    build: .
+    container_name: celery-beat
+    entrypoint: celery
+    command: -A notifications.celery beat --loglevel=info
+    environment:
+        DEBUG: "True"
+        CELERY_BROKER_URL: "redis://redis:6379/0"
+        CELERY_RESULT_BACKEND: "redis://redis:6379/0"        
+    volumes:
+      - .:/var/www/app/beat
+    links:
+      - celery-worker
+      - redis
+    depends_on:
+      - celery-worker
+      - redis
+  redis:
+    image: redis
+    restart: always
+    # ports:
+    #   - '6379:6379'
+    volumes: 
+      - redis:/data
+    container_name: redis
+
 
 volumes:
   postgres_data:
+  redis:
