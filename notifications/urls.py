@@ -32,7 +32,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include((router.urls, 'api'), namespace='api')),
     path(
-        'swagger/',
+        'docs/',
         schema_view.with_ui('swagger', cache_timeout=0),
         name='swagger-ui'
     ),

@@ -4,15 +4,20 @@ from pathlib import Path
 from celery.schedules import crontab
 from dotenv import load_dotenv
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 
-SECRET_KEY = 'django-insecure-vmj68do!=^fp5-1vcya*eh25^s&2yaxljzrm(@=zsq$fpiu4h_'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+env_debug = os.getenv('DEBUG', 'False')
+if env_debug == 'False':
+    DEBUG = False
+else:
+    DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.14", "localhost", '127.0.0.1', '95.163.230.19']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split()
 
 
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN', '')
@@ -67,34 +72,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'notifications.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": os.getenv('POSTGRES_DB', 'postgres'),
-#         "USER": os.getenv('POSTGRES_USER', 'postgres'),
-#         "PASSWORD": os.getenv('POSTGRES_PASSWORD', 'postgres'),
-#         "HOST": os.getenv('POSTGRES_HOST', ''),
-#         "PORT": os.getenv('POSTGRES_PORT', 5432),
-#     }
-# }
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": 'postgres',
-#         "USER": 'postgres',
-#         "PASSWORD": 'postgres',
-#         "HOST": 'db',
-#         "PORT": 5432,
-#     }
-# }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv('POSTGRES_DB', 'postgres'),
+            "USER": os.getenv('POSTGRES_USER', 'postgres'),
+            "PASSWORD": os.getenv('POSTGRES_PASSWORD', 'postgres'),
+            "HOST": os.getenv('POSTGRES_HOST', 'db'),
+            "PORT": os.getenv('POSTGRES_PORT', 5432),
+        }
+    }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -137,14 +132,4 @@ CELERY_BEAT_SCHEDULE = {
     },
 }
 
-
-# SPECTACULAR_SETTINGS = {
-#     'TITLE': 'Notification API',
-#     'DESCRIPTION': 'Description',
-#     'VERSION': '1.0.0',
-#     'SERVE_INCLUDE_SCHEMA': False,
-# }
-
-REST_FRAMEWORK = {
-    
-}
+REST_FRAMEWORK = {}
