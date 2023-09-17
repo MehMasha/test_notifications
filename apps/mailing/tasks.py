@@ -1,10 +1,12 @@
+from datetime import datetime, timedelta, timezone
+
 import requests
-from rest_framework import status
 from celery import shared_task
-from datetime import datetime, timezone, timedelta
-from django.db.models import Q
 from django.conf import settings
-from mailing.models import Mailing, Message, Client
+from django.db.models import Q
+from rest_framework import status
+
+from apps.mailing.models import Client, Mailing, Message
 
 
 def get_time_now():

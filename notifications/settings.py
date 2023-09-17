@@ -1,7 +1,8 @@
-from pathlib import Path
 import os
-from dotenv import load_dotenv
+from pathlib import Path
+
 from celery.schedules import crontab
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,9 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'drf_spectacular',
-    'api',
-    'mailing',
+    'apps.mailing',
+    'apps.clients',
     'drf_yasg',
 ]
 
@@ -67,12 +67,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'notifications.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # DATABASES = {
 #     "default": {
@@ -85,16 +85,16 @@ WSGI_APPLICATION = 'notifications.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'postgres',
-        "USER": 'postgres',
-        "PASSWORD": 'postgres',
-        "HOST": 'db',
-        "PORT": 5432,
-    }
-}
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": 'postgres',
+#         "USER": 'postgres',
+#         "PASSWORD": 'postgres',
+#         "HOST": 'db',
+#         "PORT": 5432,
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [

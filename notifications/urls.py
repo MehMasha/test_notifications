@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import include, path
-from drf_yasg.views import get_schema_view, ReDocRenderer
 from drf_yasg import openapi
-# from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from drf_yasg.views import ReDocRenderer, get_schema_view
+from rest_framework import routers
 
+from apps.clients.urls import router as clients_router
+from apps.mailing.urls import router as mailing_router
 
 with open('templates/notifications/description.html', 'r', encoding='utf-8') as file:
     description = file.read()
@@ -18,13 +20,25 @@ schema_view = get_schema_view(
         license=openapi.License(name="BSD License"),
     ),
     public=True,
-    # permission_classes=(permissions.AllowAny,),
 )
+
+
+router = routers.DefaultRouter()
+router.registry.extend(clients_router.registry)
+router.registry.extend(mailing_router.registry)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('api.urls')),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('api/v1/', include(router.urls)),
+    path(
+        'swagger/',
+        schema_view.with_ui('swagger', cache_timeout=0),
+        name='schema-swagger-ui'
+    ),
+    path(
+        'redoc/',
+        schema_view.with_ui('redoc', cache_timeout=0),
+        name='schema-redoc'
+    ),
 ]

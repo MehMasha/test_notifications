@@ -1,12 +1,6 @@
 from rest_framework import serializers
-from mailing.models import (Client, Mailing, Message,
-                            MailingFilter)
 
-
-class ClientSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Client
-        fields = ('id', 'phone_number', 'tag', 'timezone')
+from apps.mailing.models import Mailing, MailingFilter, Message
 
 
 class MailingFilterSerializer(serializers.ModelSerializer):
@@ -60,7 +54,7 @@ class MailingSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         mailing_filters = validated_data.get('mailing_filters', [])
-        
+
         instance.start_date = validated_data.get(
             'start_date',
             instance.start_date
@@ -70,3 +64,14 @@ class MailingSerializer(serializers.ModelSerializer):
         instance.mailing_filters.delete()
         self.create_filters(instance, mailing_filters)
         return instance
+
+
+class MailingStatisticSerializer(MailingSerializer):
+    delivered = serializers.IntegerField()
+    sent = serializers.IntegerField()
+    error = serializers.IntegerField()
+
+    class Meta:
+        model = Mailing
+        fields = ('id', 'start_date', 'end_date',
+                  'text', 'mailing_filters', 'delivered', 'sent', 'error')
