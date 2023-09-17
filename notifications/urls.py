@@ -30,15 +30,11 @@ router.registry.extend(mailing_router.registry)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls)),
+    path('api/v1/', include((router.urls, 'api'), namespace='api')),
     path(
         'swagger/',
         schema_view.with_ui('swagger', cache_timeout=0),
-        name='schema-swagger-ui'
+        name='swagger-ui'
     ),
-    path(
-        'redoc/',
-        schema_view.with_ui('redoc', cache_timeout=0),
-        name='schema-redoc'
-    ),
+
 ]
