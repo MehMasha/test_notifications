@@ -1,15 +1,15 @@
+import logging
+
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-import logging
 
 from apps.mailing.models import Mailing, Message
 from apps.mailing.serializers import (MailingSerializer,
                                       MailingStatisticSerializer,
                                       MessageSerializer)
-
 
 logger = logging.getLogger('json_logger')
 
@@ -35,7 +35,7 @@ class MailingViewSet(viewsets.ModelViewSet):
                 "mailing_id": kwargs.get('pk')
             }
         )
-        return super().list(request, *args, **kwargs)
+        return super().retrieve(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         data = dict(request.data)

@@ -1,10 +1,10 @@
 
-from rest_framework import viewsets
 import logging
+
+from rest_framework import viewsets
 
 from apps.clients.models import Client
 from apps.clients.serializers import ClientSerializer
-
 
 logger = logging.getLogger('json_logger')
 
@@ -29,7 +29,7 @@ class ClientViewSet(viewsets.ModelViewSet):
                 "client_id": kwargs.get('pk')
             }
         )
-        return super().list(request, *args, **kwargs)
+        return super().retrieve(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         data = dict(request.data)
